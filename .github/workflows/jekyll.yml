@@ -1,0 +1,24 @@
+name: Bootcamp2020 
+
+on:
+  push:
+    branches: [ master ]
+ =
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Installing node
+      uses:actions/setup-node@v2-beta
+      with:
+      node-version:12
+      
+      -name: Installing surge
+       run: npm i -g surge
+       
+       -name: Deploying using surge
+        run: surge ./http://erratic-hydrant.surge.sh/ --token $ {{secrets.SURGE_TOKEN}}
